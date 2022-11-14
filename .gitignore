@@ -3,6 +3,8 @@ node_modules
 npm-debug.log
 yarn-error.log
 
+.prettierrc
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
