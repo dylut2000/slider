@@ -1,4 +1,4 @@
-<div class="slider-container">
+<div class="slider-container" *ngIf="data.length === 5; else slider">
   <div
     class="card"
     *ngFor="let item of data; let i = index"
@@ -16,7 +16,13 @@
       class="dot active"
       *ngFor="let dot of data; let i = index"
       (click)="onSelectedIndex(i)"
-      [ngClass]="{'active': selectedIndex === i}"
+      [ngClass]="{active: selectedIndex === i}"
     ></span>
   </div>
 </div>
+
+<ng-template #slider>
+  <div class="slider-container">
+    <h1>Slider should hv 5 items</h1>
+  </div>
+</ng-template>

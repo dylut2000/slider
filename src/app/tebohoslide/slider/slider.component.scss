@@ -94,6 +94,11 @@
       transform: scale(1.5);
     }
   }
+
+  h1 {
+    color: rgb(161, 67, 67);
+    font-weight: 100;
+  }
 }
 
 @media (min-width: 992px) {
@@ -110,3 +115,4 @@
     }
   }
 }
+
