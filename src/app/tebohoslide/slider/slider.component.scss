@@ -1,12 +1,13 @@
 .slider-container {
   width: 100vw;
-  height: 22rem;
+  height: 23rem;
   background-color: rgba(255, 255, 255, 0.525);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   font-family: sans-serif;
+  position: relative;
 
   .card {
     position: relative;
@@ -25,8 +26,16 @@
       width: 100%;
       color: whitesmoke;
       text-align: center;
-      padding: 0.5rem 0;
+      padding: 0.8rem 0;
       font-weight: bold;
+      transition: ease-in-out 500ms;
+      overflow: scroll;
+    }
+
+    &:hover .title {
+      letter-spacing: 2px;
+      color: rgb(255, 255, 255);
+      background-color: rgba(0, 0, 0, 0.724);
     }
 
     &.active {
@@ -55,6 +64,36 @@
       object-fit: cover;
     }
   }
+
+  .dot-container {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    background-color: rgb(0, 0, 0);
+    margin: 0 5px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: opacity 0.6s ease;
+    opacity: 0.5;
+    transition: ease-in-out 300ms;
+
+    &:hover,
+    .active {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
 }
 
 @media (min-width: 992px) {
@@ -66,8 +105,6 @@
       }
 
       &.last {
-        width: 14rem;
-        height: 12rem;
         display: block;
       }
     }

@@ -2,9 +2,16 @@
   <div
     class="card"
     *ngFor="let item of data; let i = index"
-    [ngClass]="{active: i === 2, last: i === 0 ? true : i === 4 ? true : false}"
+    [ngClass]="{
+      active: i === selectedIndex,
+      last: i === 0 ? true : i === 4 ? true : false
+    }"
   >
     <img [src]="item.imageUrl" [alt]="item.title" />
     <div class="title">{{ item.title }}</div>
+  </div>
+
+  <div class="dot-container">
+    <span class="dot" *ngFor="let dot of data; let i = index"></span>
   </div>
 </div>

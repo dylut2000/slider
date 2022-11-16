@@ -9,7 +9,7 @@ import {SliderInterface} from '../interface/slider-interface'
 export class SliderComponent implements OnInit {
   @Input() data: SliderInterface[] = []
 
-  selectedIndex: number = 0
+  selectedIndex: number = 2
 
   constructor() {}
 
