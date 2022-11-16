@@ -7,17 +7,26 @@ import {SliderInterface} from '../interface/slider-interface'
   styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent implements OnInit {
-  @Input() data: SliderInterface[] = []
+  @Input('data') data: SliderInterface[] = []
+  @Input('numberOfSeconds') numberOfSeconds: number = 3
 
   selectedIndex: number = 2
 
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.data)
+    setInterval(() => this.onNext(), this.numberOfSeconds * 1000)
   }
 
   onSelectedIndex(index: number): void {
     this.selectedIndex = index
+  }
+
+  onNext(): void {
+    if (this.selectedIndex === this.data.length - 1) {
+      this.selectedIndex = 0
+    } else {
+      this.selectedIndex++
+    }
   }
 }

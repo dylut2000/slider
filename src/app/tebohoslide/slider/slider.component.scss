@@ -53,8 +53,8 @@
     }
 
     &.last {
-      width: 14rem;
-      height: 12rem;
+      // width: 14rem;
+      // height: 12rem;
       display: none;
     }
 
@@ -88,8 +88,8 @@
     opacity: 0.5;
     transition: ease-in-out 300ms;
 
-    &:hover,
-    .active {
+    .active,
+    &:hover {
       opacity: 1;
       transform: scale(1.5);
     }

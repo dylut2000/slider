@@ -13,9 +13,10 @@
 
   <div class="dot-container">
     <span
-      class="dot"
+      class="dot active"
       *ngFor="let dot of data; let i = index"
       (click)="onSelectedIndex(i)"
+      [ngClass]="{'active': selectedIndex === i}"
     ></span>
   </div>
 </div>
