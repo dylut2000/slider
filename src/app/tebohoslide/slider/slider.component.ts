@@ -16,4 +16,8 @@ export class SliderComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data)
   }
+
+  onSelectedIndex(index: number): void {
+    this.selectedIndex = index
+  }
 }

@@ -12,6 +12,10 @@
   </div>
 
   <div class="dot-container">
-    <span class="dot" *ngFor="let dot of data; let i = index"></span>
+    <span
+      class="dot"
+      *ngFor="let dot of data; let i = index"
+      (click)="onSelectedIndex(i)"
+    ></span>
   </div>
 </div>
