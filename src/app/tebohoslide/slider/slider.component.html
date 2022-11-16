@@ -1,7 +1,14 @@
 <div class="slider-container">
-  <div class="card last"></div>
+  <!-- <div class="card last"></div>
   <div class="card"></div>
   <div class="card active"></div>
   <div class="card"></div>
-  <div class="card last"></div>
+  <div class="card last"></div> -->
+  <div
+    class="card"
+    *ngFor="let item of data; let i = index"
+    [ngClass]="{active: i === 2, last: i === 0 ? true : i === 4 ? true : false}"
+  >
+  <img [src]="item.imageUrl" [alt]="item.title">
+</div>
 </div>
