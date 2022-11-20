@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, HostListener, Input, OnInit, ViewChild} from '@angular/core'
 import {SliderInterface} from '../interface/slider-interface'
 
 @Component({
@@ -8,25 +8,52 @@ import {SliderInterface} from '../interface/slider-interface'
 })
 export class SliderComponent implements OnInit {
   @Input('data') data: SliderInterface[] = []
-  @Input('numberOfSeconds') numberOfSeconds: number = 3
 
-  selectedIndex: number = 2
+  containerArrayBlock: Array<any> = new Array(window.innerWidth > 990 ? 5 : 3)
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    let windowWidth = event.target.innerWidth
+    if (windowWidth > 990) {
+      this.containerArrayBlock = new Array(5)
+    } else {
+      this.containerArrayBlock = new Array(3)
+    }
+  }
 
   constructor() {}
 
-  ngOnInit(): void {
-    setInterval(() => this.onNext(), this.numberOfSeconds * 1000)
-  }
+  ngOnInit(): void {}
 
-  onSelectedIndex(index: number): void {
-    this.selectedIndex = index
-  }
+  getClass(i: number): string {
+    let className = ''
+    if (window.innerWidth > 990) {
+      switch (i) {
+        case 0:
+        case 4:
+          className = 'last'
 
-  onNext(): void {
-    if (this.selectedIndex === this.data.length - 1) {
-      this.selectedIndex = 0
+          break
+        case 1:
+        case 3:
+          className = 'next'
+          break
+        case 2:
+          className = 'active'
+          break
+      }
     } else {
-      this.selectedIndex++
+      switch (i) {
+        case 0:
+        case 2:
+          className = 'next'
+          break
+        case 1:
+          className = 'active'
+          break
+      }
     }
+
+    return className
   }
 }

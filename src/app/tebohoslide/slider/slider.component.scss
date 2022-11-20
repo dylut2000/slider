@@ -1,6 +1,7 @@
 .slider-container {
   width: 100vw;
-  height: 23rem;
+  height: 28rem;
+  overflow: hidden;
   background-color: rgba(255, 255, 255, 0.525);
   display: flex;
   justify-content: center;
@@ -10,109 +11,49 @@
   position: relative;
 
   .card {
-    position: relative;
     width: 16rem;
     height: 14rem;
     border-radius: 1rem;
+    background-color: white;
     overflow: hidden;
-    opacity: 0.7;
-    transition: ease-in-out 300ms;
+    position: relative;
+    -webkit-box-shadow: 0px 6px 14px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 6px 14px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 6px 14px -4px rgba(0, 0, 0, 0.75);
 
-    .title {
-      position: absolute;
-      bottom: 0;
-      z-index: 4;
-      background-color: rgba(0, 0, 0, 0.546);
-      width: 100%;
-      color: whitesmoke;
-      text-align: center;
-      padding: 0.8rem 0;
-      font-weight: bold;
-      transition: ease-in-out 500ms;
-      overflow: scroll;
-    }
-
-    &:hover .title {
-      letter-spacing: 2px;
-      color: rgb(255, 255, 255);
-      background-color: rgba(0, 0, 0, 0.724);
-    }
-
-    &.active {
-      width: 20rem;
-      height: 18rem;
-      opacity: 0.9;
-      -webkit-box-shadow: 0px 8px 13px -7px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 0px 8px 13px -7px rgba(0, 0, 0, 0.75);
-      box-shadow: 0px 8px 13px -7px rgba(0, 0, 0, 0.75);
-    }
-
-    &:hover {
-      opacity: 1;
-      transform: scale(1.04);
-    }
-
-    &.last {
-      // width: 14rem;
-      // height: 12rem;
-      display: none;
-    }
-
-    img {
+    .image {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-  }
 
-  .dot-container {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .dot {
-    cursor: pointer;
-    height: 13px;
-    width: 13px;
-    background-color: rgb(0, 0, 0);
-    margin: 0 5px;
-    border-radius: 50%;
-    display: inline-block;
-    transition: opacity 0.6s ease;
-    opacity: 0.5;
-    transition: ease-in-out 300ms;
-
-    .active,
-    &:hover {
-      opacity: 1;
-      transform: scale(1.5);
+    .title {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.535);
+      color: rgb(199, 199, 199);
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0.3rem;
     }
-  }
 
-  h1 {
-    color: rgb(161, 67, 67);
-    font-weight: 100;
+    &.active {
+      transform: scale(1.8);
+      z-index: 10;
+    }
+
+    &.next {
+      transform: scale(1.3);
+      z-index: 8;
+    }
+
+    &.last {
+      transform: scale(1);
+      z-index: 6;
+    }
   }
 }
 
 @media (min-width: 992px) {
-  .slider-container {
-    gap: 1rem;
-
-    .card {
-      &.active {
-      }
-
-      &.last {
-        display: block;
-      }
-    }
-  }
 }
-

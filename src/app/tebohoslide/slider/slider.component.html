@@ -1,28 +1,10 @@
-<div class="slider-container" *ngIf="data.length === 5; else slider">
+<div class="slider-container">
   <div
     class="card"
-    *ngFor="let item of data; let i = index"
-    [ngClass]="{
-      active: i === selectedIndex,
-      last: i === 0 ? true : i === 4 ? true : false
-    }"
+    *ngFor="let item of containerArrayBlock; let i = index"
+    ngClass="{{ getClass(i) }}"
   >
-    <img [src]="item.imageUrl" [alt]="item.title" />
-    <div class="title">{{ item.title }}</div>
-  </div>
-
-  <div class="dot-container">
-    <span
-      class="dot active"
-      *ngFor="let dot of data; let i = index"
-      (click)="onSelectedIndex(i)"
-      [ngClass]="{active: selectedIndex === i}"
-    ></span>
+    <div class="title">{{ data[i].title }}</div>
+    <img [src]="data[i].imageUrl" class="image" alt="" />
   </div>
 </div>
-
-<ng-template #slider>
-  <div class="slider-container">
-    <h1>Slider should hv 5 items</h1>
-  </div>
-</ng-template>
