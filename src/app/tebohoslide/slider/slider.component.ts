@@ -8,8 +8,12 @@ import {SliderInterface} from '../interface/slider-interface'
 })
 export class SliderComponent implements OnInit {
   @Input('data') data: SliderInterface[] = []
+  @Input('timer') timer: number | undefined
 
-  containerArrayBlock: Array<any> = new Array(window.innerWidth > 990 ? 5 : 3)
+  cardContainers: number = window.innerWidth > 990 ? 5 : 3
+  containerArrayBlock: Array<any> = new Array(this.cardContainers)
+  sliderData: SliderInterface[] = []
+  selectedIndex: number = 0
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -23,7 +27,10 @@ export class SliderComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setSliderItems()
+    this.onAutoScroll()
+  }
 
   getClass(i: number): string {
     let className = ''
@@ -55,5 +62,38 @@ export class SliderComponent implements OnInit {
     }
 
     return className
+  }
+
+  onNext(): void {
+    if (this.selectedIndex < this.data.length - 1) {
+      this.selectedIndex++
+    } else {
+      this.selectedIndex = 0
+    }
+
+    this.setSliderItems()
+  }
+
+  onPrevious(): void {}
+
+  setSliderItems(): void {
+    let temp = 0
+
+    this.sliderData = []
+
+    for (let i = 0; i < this.cardContainers; i++) {
+      if (this.data[i + this.selectedIndex]) {
+        this.sliderData.push(this.data[i + this.selectedIndex])
+      } else {
+        this.sliderData.push(this.data[temp])
+        temp++
+      }
+    }
+  }
+
+  onAutoScroll(): void {
+    if (Number(this.timer)) {
+      setInterval(() => this.onNext(), Number(this.timer) * 1000)
+    }
   }
 }

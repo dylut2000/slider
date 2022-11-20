@@ -60,6 +60,9 @@ export class HomeComponent implements OnInit {
     },
   ]
 
+  // pass an intenger representing number of seconds before the picture change
+  timer: number = 2
+
   constructor() {}
 
   ngOnInit(): void {}
